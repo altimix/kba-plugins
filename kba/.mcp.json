@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "kba": {
+      "type": "http",
+      "url": "https://mcp.kba.bazaarinc.dev/mcp"
+    }
+  }
+}

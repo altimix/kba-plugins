@@ -1,0 +1,21 @@
+{
+  "name": "kba-tools",
+  "owner": {
+    "name": "Bazaar Japan",
+    "url": "https://app.kba.bazaarinc.dev"
+  },
+  "description": "求人ボックス(採用ボード)運用を Claude から行うための kba プラグイン配布マーケットプレイス。",
+  "plugins": [
+    {
+      "name": "kba",
+      "source": "./kba",
+      "displayName": "kba (求人ボックス自動化)",
+      "description": "求人ボックス(採用ボード)の求人原稿づくり、レビューシートでの修正、本番入稿、写真、月次リライト、成果分析を Claude から操作する。kba Remote MCP server に接続して使う。",
+      "author": { "name": "Bazaar Japan" },
+      "homepage": "https://app.kba.bazaarinc.dev",
+      "license": "UNLICENSED",
+      "category": "workflow",
+      "tags": ["求人ボックス", "recruiting", "csv", "kbx"]
+    }
+  ]
+}
