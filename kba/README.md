@@ -22,10 +22,10 @@
 媒体仕様・運用ルール・チェック内容のように変わるものは**サーバから配信**される。
 
 ```
-kba_get_skill_guidance({ topic: "index" })
+kba_get_skill_guidance({ topic: "generation" })   # 例: drafting-kbx-jobs
 ```
 
-各スキルは作業前にこれを取得する。**プラグインを更新しなくてもサーバ側の更新が反映される**ので、
+多くのスキルは作業前に、担当する topic の guidance をこれで取得する(topic の一覧は `topic: "index"`)。**プラグインを更新しなくてもサーバ側の更新が反映される**ので、
 プラグイン自体の更新はまれ。
 
 ## 利用前提
