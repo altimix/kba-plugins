@@ -52,7 +52,8 @@
 - 進行状況: `kba_get_job_status`
 - 履歴から探す: `kba_list_upload_jobs`
 - 求人ボックス側の実データ: `kba_list_kbox_csv_artifacts` → `kba_get_kbox_csv_artifact_rows`
-- 表示が古い: `kba_trigger_monitor_run` で取り直し、`kba_get_monitor_run` で完了を待つ
+- 表示が古い: KBA の「媒体運用」画面で対象の接続の「今すぐ更新」を実行してもらい、`kba_get_monitor_run` で完了を待つ。
+  求人ボックス上の原稿は毎時(件数が動いたクライアント)と 1 日 1 回(全クライアント)自動で取り直される
 
 ## 使わない経路
 

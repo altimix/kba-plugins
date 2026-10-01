@@ -24,8 +24,9 @@ kba_get_skill_guidance({ topic: "ops" })
 | 求人ボックス側の接続 | `kba_get_kbox_connection_status` |
 | 手動更新の結果 | `kba_get_monitor_run` |
 
-表示が古いときは `kba_trigger_monitor_run` で明示的に取り直し、`kba_get_monitor_run` で完了を待つ。
-定期実行とは別枠の手動更新なので、**範囲を絞って使う。** 全件の取り直しを既定にしない。
+表示が古いときは、KBA の「媒体運用」画面で対象の接続の「今すぐ更新」を実行してもらい、
+`kba_get_monitor_run` で完了を待つ。求人ボックス上の原稿(CSV の現在の状態)は自動で取り直される。
+件数が動いたクライアントは毎時、全クライアントは 1 日 1 回で、すぐに取り直す tool は無い。
 
 ## つながらないとき
 
