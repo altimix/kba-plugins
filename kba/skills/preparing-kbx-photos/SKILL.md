@@ -59,7 +59,10 @@ URL は短命で1回きり。期限が切れたら取り直す。**3 で終わ�
 登録結果が不明なら既存の操作を照合し、新しいoperationIdやURLを発行して再送しない。これは生成の入力専用で、
 求人ボックスへの写真登録には使わない。
 
-過去の生成は `kba_list_photo_generations` で辿れる。
+過去の生成は `kba_list_photo_generations` で辿れるが、これは操作の完了証明ではない。`kba_generate_photo`
+の応答が失われた場合は、**同じ `operationId` と変更していない元の引数**で `kba_generate_photo` を再実行する。
+内部の strict receipt 照合が完了済みの結果だけを返し、追加の有料生成は起こさない。新しい UUID を発行したり、
+headerless の履歴取得だけを成功証跡として review / catalog / CSV / upload へ進めたりしない。
 
 **生成しただけでは何も確定していない。** 4 で採用し、5 で登録し、6 で反映するまでは CSV に入れない。
 作り直しのたびに前の結果は捨てる。
