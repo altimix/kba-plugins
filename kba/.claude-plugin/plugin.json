@@ -1,7 +1,7 @@
 {
   "name": "kba",
   "displayName": "kba (求人ボックス自動化)",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "求人ボックス(採用ボード)向けの CSV 生成・入稿・写真管理・月次リライト・パフォーマンス分析をまとめた関係者限定プラグイン。kba Remote MCP server に接続して、生成した CSV をダウンロードせずに本番入稿まで繋ぐ。",
   "author": { "name": "Bazaar Japan" },
   "homepage": "https://app.kba.bazaarinc.dev",

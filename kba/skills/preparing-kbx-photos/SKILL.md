@@ -51,9 +51,13 @@ URL は短命で1回きり。期限が切れたら取り直す。**3 で終わ�
 - [ ] 6. kba_upload_photo_to_kbox                  求人ボックスへ反映する
 ```
 
-参考画像を渡す場合も参照渡し。`kba_create_photo_reference_upload_url` → PUT →
-`kba_register_photo_generation_reference_image`。これは生成の入力専用で、求人ボックスへの
-写真登録には使わない。
+参考画像を渡す場合も参照渡し。先に**同じローカル画像バイト列**の SHA-256 を計算し、
+`operationId`、`fileName`、`mimeType`、`sizeBytes`、`contentSha256` を
+`kba_create_photo_reference_upload_url` へ渡す。返った `operationId`、`inputDigest`、client binding、
+`referenceUploadRef` を保持して、同じバイト列を URL へ1回だけ PUT し、
+`kba_register_photo_generation_reference_image` へ `referenceUploadRef`、`operationId`、`inputDigest` を渡す。
+登録結果が不明なら既存の操作を照合し、新しいoperationIdやURLを発行して再送しない。これは生成の入力専用で、
+求人ボックスへの写真登録には使わない。
 
 過去の生成は `kba_list_photo_generations` で辿れる。
 
