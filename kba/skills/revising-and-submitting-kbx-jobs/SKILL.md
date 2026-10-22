@@ -34,11 +34,16 @@ kba_get_skill_guidance({ topic: "upload" })              # 入れるとき
 - [ ] 4. apply で反映する
 ```
 
-**1.** `kba_get_review_sheet` でシートの場所を確認。行の中身は `kba_get_review_sheet_import_rows`。
+**1.** `kba_get_review_sheet` でシートの場所を確認。現在の原稿は `kba_get_review_sheet_rows` で、
+物理的な行番号と求人項目を絞って読む。未承認・未採番の行も対象にでき、読取で採番や承認はしない。
+「末尾に一文追記」などは対象項目の現在全文を取得して既存文を保持する。件数×選択項目数は100以下。
+256KiBを超えたら行数か項目数を減らし、本文を切り捨てない。`kba_get_review_sheet_import_rows` は
+承認済みの入稿対象snapshotなので、未承認原稿の現在値の代わりにしない。
 検証結果を見るなら `kba_get_validation_result`。
 
 **2.** `kba_preview_review_sheet_edits`。**書き込まずに**行・列ごとの before/after、警告、公開への
 影響、preview handle を返す。
+部分編集では読取値とpreviewのbeforeを照合し、間に変更があれば新しいbeforeから変更を組み直す。
 
 行の指定は **stable row ID**(推奨)／シートの行番号／列の完全一致セレクタ。既定は `match:"unique"` で、
 複数該当したら候補を返して止まる。**黙って対象を広げない。**「全部」は利用者が明示したときだけ使い、
@@ -48,6 +53,7 @@ kba_get_skill_guidance({ topic: "upload" })              # 入れるとき
 
 **4.** `kba_apply_review_sheet_edits` に承認済みの preview handle を渡す。1回の batch でシートへ書き、
 stable row ID で事後検証する。不確実な結果が返ったときに自動で再試行しない。もう一度の明示承認と理由が要る。
+反映後は `kba_get_review_sheet_rows` で同じ行・項目を再読し、指定箇所と保持すべき文章を照合する。
 
 ## 入れる(レビューシート正本)
 
