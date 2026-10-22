@@ -36,6 +36,8 @@ kba_get_skill_guidance({ topic: "csv-spec" })
 **2. 原典** — 採用ページ URL / 求人票 PDF / テキストのいずれか。ここから事実を取る。
 
 **3. 写真** — `kba_choose_csv_photo_policy` で「使わない / 登録済みを使う / 新しく作る」を一度で確定する。
+初回は `chatId` / `clientId` だけで開始し、返った `policyRequestId` を人の選択と一緒に次の呼び出しへ渡す。
+利用者が方針を依頼で明示済みなら選択を保持し、同じ質問を繰り返さない。
 画像を扱う手順そのものは preparing-kbx-photos に委ねる。ここで必要なのは、**求人ボックス側で有効になった写真ID**
 (または「使わない」)だけ。
 
